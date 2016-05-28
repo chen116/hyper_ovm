@@ -1,6 +1,7 @@
 import sys
 
 infile = str(sys.argv[1])
+print sys.argv[3]
 print infile
 with open(infile, "r") as ins:
     array = []
