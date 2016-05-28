@@ -31,7 +31,7 @@ infile="hi"
 domU=$1
 mkdir -p ./run-data 
 rawfile="./run-data/xen_raw"
-tracefile="./run-data/xen_trace"
+tracefile="./run-data/xen_trace/""$dist""_uni-moderate""_""$util""_""$rep"
 rm ${rawfile}
 rm ${tracefile}
 
@@ -43,7 +43,7 @@ fileee="run-data/""$dist""_uni-moderate""_""$util""_""$rep"
 echo ${fileee}
 python sched_overhead_mea.py ${tracefile} ${fileee}
 rm ${rawfile}
-rm ${tracefile}
+
 
 sleep 25
 done
