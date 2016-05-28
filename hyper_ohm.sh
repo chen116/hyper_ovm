@@ -6,7 +6,8 @@ declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
 #declare -a Util=("1")
 declare -a Rep=("0")
 #declare -a Rep=("0" "1" "2" "3" "4" "5")
-
+rm ${rawfile}
+rm ${tracefile}
 for dist in "${Dist[@]}"
 do
   for util in "${Util[@]}"
@@ -23,8 +24,8 @@ do
 #sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'"'"'`echo -ne '"'"'\015'"'"'` && exit'
 
 
-ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
-#sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
+#ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
+sshpass -p 'anch0rs' ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
 
 sleep 5
 infile="hi"
