@@ -1,7 +1,7 @@
 
 declare -a Dist=("bimo-medium")
 #"uni-heavy" "uni-medium" "uni-light")
-declare -a PDist=("uni-moderate")
+declare -a PDist=("uni-longRTXen")
 #declare -a Util=("1.0" "2.0" "3.0" "4.0" "5.0" "6.0" "7.0" "8.0")
 declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
 #declare -a Util=("1")
@@ -22,7 +22,7 @@ do
 #sshpass -p 'anch0rs' ssh root@192.168.122.170 'screen -d -m ~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'
 #sshpass -p 'anch0rs' ssh 192.168.122.129 'cd experiment-scripts/ ; ./run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' & exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
-sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-longRTXen '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
+sshpass -p 'anch0rs' ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-longRTXen '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'"'"'`echo -ne '"'"'\015'"'"'` && exit'
 
 sleep 5
