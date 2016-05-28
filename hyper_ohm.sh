@@ -6,6 +6,7 @@ declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
 #declare -a Util=("1")
 declare -a Rep=("0")
 #declare -a Rep=("0" "1" "2" "3" "4" "5")
+
 for dist in "${Dist[@]}"
 do
   for util in "${Util[@]}"
@@ -20,7 +21,7 @@ do
 #sshpass -p 'anch0rs' ssh root@192.168.122.170 'screen -d -m ~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'
 #sshpass -p 'anch0rs' ssh 192.168.122.151 '~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' & exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'"'"'`echo -ne '"'"'\015'"'"'` && exit'
-ssh root@192.168.122.151 '/usr/bin/screen -d -m -S test'
+
 ssh root@192.168.122.151 '/usr/bin/screen -S test -p 0 -X stuff "~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' $(printf \\r)"'
 #ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
@@ -40,7 +41,7 @@ xenalyze --dump-all ${rawfile} > ${tracefile}
 echo ./run-data/"$dist""_uni-moderate""_""$util""_""$rep"
 fileee=./run-data/"$dist""_uni-moderate""_""$util""_""$rep"
 echo ${fileee}
-python sched_overhead_mea.py ${tracefile} ${domU} ./run-data/"$dist""_uni-moderate""_""$util""_""$rep"
+python sched_overhead_mea.py ${tracefile} ${domU} ${fileee}
 rm ${rawfile}
 rm ${tracefile}
 
