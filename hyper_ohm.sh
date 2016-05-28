@@ -1,9 +1,9 @@
 
-declare -a Dist=("uni-heavy")
+declare -a Dist=("bimo-medium")
 #"uni-medium" "uni-light")
-declare -a PDist=("uni-moderate")
-#declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
-declare -a Util=("1")
+declare -a PDist=("uni-moderate" "uni-longRTXen")
+declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
+#declare -a Util=("1")
 declare -a Rep=("0")
 #declare -a Rep=("0" "1" "2" "3" "4" "5")
 
