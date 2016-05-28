@@ -39,9 +39,9 @@ echo "start recording....."
 xentrace -D -e 0x28000 -S 256 -T 2 ${rawfile}
 xenalyze --dump-all ${rawfile} > ${tracefile}
 echo run-data/"$dist""_uni-moderate""_""$util""_""$rep"
-fileee=run-data/"$dist""_uni-moderate""_""$util""_""$rep"
+fileee="run-data/""$dist""_uni-moderate""_""$util""_""$rep"
 echo ${fileee}
-python sched_overhead_mea.py ${tracefile} ${domU} ${fileee}
+python sched_overhead_mea.py ${tracefile} ${fileee}
 rm ${rawfile}
 rm ${tracefile}
 

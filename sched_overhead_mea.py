@@ -43,7 +43,7 @@ while i < len(useful_lines):
       else:
         j=j+1
   i=i+1
-f = open(sys.argv[3], 'w')
+f = open(str(sys.argv[2]), 'w')
 f.write('-total num of scheduling:'+ str(match)+'\n')
 f.write('-avg overhead:'+ str(total_t/match)+'\n')
 print ('\ntotal num of scheduling:'+ str(match))
