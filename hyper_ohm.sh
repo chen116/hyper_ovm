@@ -31,7 +31,7 @@ infile="hi"
 domU=$1
 mkdir -p ./run-data 
 rawfile="./run-data/xen_raw"
-tracefile="./run-data/xen_trace/""$dist""_uni-moderate""_""$util""_""$rep"
+tracefile="./run-data/""$dist""_uni-moderate""_""$util""_""$rep"
 rm ${rawfile}
 rm ${tracefile}
 
