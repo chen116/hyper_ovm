@@ -6,8 +6,6 @@ declare -a Util=("1" "2" "3" "4" "5" "6" "7" "8")
 #declare -a Util=("1")
 declare -a Rep=("0")
 #declare -a Rep=("0" "1" "2" "3" "4" "5")
-rm ${rawfile}
-rm ${tracefile}
 for dist in "${Dist[@]}"
 do
   for util in "${Util[@]}"
@@ -33,6 +31,9 @@ domU=$1
 mkdir -p ./run-data 
 rawfile="./run-data/xen_raw"
 tracefile="./run-data/xen_trace"
+rm ${rawfile}
+rm ${tracefile}
+
 echo "start recording....."
 xentrace -D -e 0x28000 -S 256 -T 2 ${rawfile}
 xenalyze --dump-all ${rawfile} > ${tracefile}
