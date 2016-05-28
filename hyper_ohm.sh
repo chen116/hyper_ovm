@@ -22,7 +22,9 @@ do
 #sshpass -p 'anch0rs' ssh 192.168.122.151 '~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' & exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.174 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp uni-heavy 5 uni-moderate 1 1'"'"'`echo -ne '"'"'\015'"'"'` && exit'
 
-ssh root@192.168.122.151 '/usr/bin/screen -S test -p 0 -X stuff "~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' $(printf \\r)"'
+#ssh root@192.168.122.151 '/usr/bin/screen -S test -p 0 -X stuff "~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' $(printf \\r)"'
+ssh root@192.168.122.151 '/usr/bin/screen -S test -p 0 -X stuff "~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-longRTXen '"$util"' '"$rep"' $(printf \\r)"'
+
 #ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
 #sshpass -p 'anch0rs' ssh root@192.168.122.151 'screen -S 3298 -X stuff '"'"'~/hyper_ovm/run_bench_Array_granular.sh myapp '"$dist"' 5 uni-moderate '"$util"' '"$rep"' '"'"'`echo -ne '"'"'\015'"'"'` && exit'
 
@@ -31,15 +33,17 @@ infile="hi"
 domU=$1
 mkdir -p ./run-data 
 rawfile="./run-data/xen_raw"
-tracefile="./run-data/""$dist""_uni-moderate""_""$util""_""$rep"
+tracefile="./run-data/""$dist""_uni-longRTXen""_""$util""_""$rep"
 rm ${rawfile}
 rm ${tracefile}
 
 echo "start recording....."
 xentrace -D -e 0x28000 -S 256 -T 2 ${rawfile}
 xenalyze --dump-all ${rawfile} > ${tracefile}
-echo run-data/"$dist""_uni-moderate""_""$util""_""$rep"
-fileee="run-data/""$dist""_uni-moderate""_""$util""_""$rep"
+echo run-data/"$dist""_uni-longRTXen""_""$util""_""$rep"
+#fileee="run-data/""$dist""_uni-moderate""_""$util""_""$rep"
+fileee="run-data/""$dist""_uni-longRTXen""_""$util""_""$rep"
+
 echo ${fileee}
 python sched_overhead_mea.py ${tracefile} ${fileee}
 rm ${rawfile}
